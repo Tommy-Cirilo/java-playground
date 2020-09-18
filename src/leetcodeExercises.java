@@ -23,7 +23,7 @@ public class leetcodeExercises {
     Input: nums = [3,3], target = 6
     Output: [0,1]*/
 
-    public int[] twoSum(int[] nums, int target) {
+    public static int[] twoSum(int[] nums, int target) {
         //cycle through the nums array for a first index
         for (int i = 0; i < nums.length; i++) {
             //cycle through the nums array a second time for second index
