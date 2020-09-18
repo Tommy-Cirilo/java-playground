@@ -24,6 +24,21 @@ public class leetcodeExercises {
     Output: [0,1]*/
 
     public int[] twoSum(int[] nums, int target) {
+        //cycle through the nums array for a first index
+        for (int i = 0; i < nums.length; i++) {
+            //cycle through the nums array a second time for second index
+            for (int j = i + 1; j < nums.length; j++) {
+                //conditional statement to check if the second index is equal to the second parameter in method minus the 1st index
+                if (nums[j] == target - nums[i]) {
+                    //return the new result array as first index, second
+                    return new int[] { i, j };
+                }
+            }
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+
+    public static void main(String[] args) {
 
     }
 
