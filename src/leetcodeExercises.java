@@ -1,7 +1,4 @@
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class leetcodeExercises {
 
@@ -72,7 +69,36 @@ public class leetcodeExercises {
       ListNode(int val, ListNode next) { this.val = val; this.next = next; }
     }
 
-//    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {}
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        Stack<Integer> stack1 = new Stack<>();
+        Stack<Integer> stack2 = new Stack<>();
+
+        stack1 = buildStack(l1);
+        stack2 = buildStack(l2);
+
+        Iterator<Integer> itr = stack1.iterator();
+        while(itr.hasNext()) {
+            System.out.print(itr.next() + " ");
+        }
+        System.out.println();
+        itr = stack2.iterator();
+        while(itr.hasNext()) {
+            System.out.print(itr.next() + " ");
+        }
+
+        return l1;
+    }
+
+    // method to help traverse through linked list
+    public static Stack<Integer> buildStack(ListNode l) {
+        Stack<Integer> stack = new Stack<>();
+        ListNode current = l;
+        while(current != null) {
+            stack.push(current.val);
+            current = current.next;
+        }
+        return stack;
+    }
 
     public static void main(String[] args) {
 //        Integer [] arr = new Integer[] { 3,2,4 };
@@ -84,12 +110,8 @@ public class leetcodeExercises {
         ListNode l1 = buildList(list1);
         ListNode l2 = buildList(list2);
 
-//        System.out.println(l1.val);
-        ListNode current = l1;
-        while(current != null) {
-            System.out.println(current.val);
-            current = current.next;
-        }
+        ListNode root1 = addTwoNumbers(l1, l2);
+        System.out.println("\nRoot list 1: " + root1.val);
     }
 
     public static ListNode buildList(int[] arr) {
