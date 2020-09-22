@@ -2,7 +2,7 @@ import java.util.*;
 
 public class leetcodeExercises {
 
-    //Two Sum Exercise
+    /** 1. Two Sum Exercise **/
 
     /*Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
 
@@ -51,9 +51,12 @@ public class leetcodeExercises {
         }
         throw new IllegalArgumentException("No two sum solution");
     }
+    /** 1. Two Sum Exercise End **/
 
-//    You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
-//
+    /** 2. Add Two Numbers **/
+//    You are given two non-empty linked lists representing two non-negative integers.
+//    The digits are stored in reverse order and each of their nodes contain a single digit.
+//    Add the two numbers and return it as a linked list.
 //    You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 //
 //    Example:
@@ -70,21 +73,20 @@ public class leetcodeExercises {
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        Stack<Integer> stack1 = new Stack<>();
-        Stack<Integer> stack2 = new Stack<>();
+        // build two stacks for each linked list
+        Stack<Integer> stack1 = buildStack(l1);
+        Stack<Integer> stack2 = buildStack(l2);
 
-        stack1 = buildStack(l1);
-        stack2 = buildStack(l2);
+        // build an ArrayList by popping the elements from both stacks
+        List<Integer> arr1 = buildArrayList(stack1);
+        List<Integer> arr2 = buildArrayList(stack2);
 
-        Iterator<Integer> itr = stack1.iterator();
-        while(itr.hasNext()) {
-            System.out.print(itr.next() + " ");
-        }
-        System.out.println();
-        itr = stack2.iterator();
-        while(itr.hasNext()) {
-            System.out.print(itr.next() + " ");
-        }
+        // display the ArrayLists
+        System.out.print("List 1: ");
+        displayList(arr1);
+
+        System.out.print("List 2: ");
+        displayList(arr2);
 
         return l1;
     }
@@ -99,6 +101,24 @@ public class leetcodeExercises {
         }
         return stack;
     }
+
+    // method to help build a list of the numbers from the stack
+    public static List<Integer> buildArrayList(Stack<Integer> stack) {
+        List<Integer> arr = new ArrayList<>();
+        while (!stack.isEmpty()) {
+            arr.add(stack.pop());
+        }
+        return arr;
+    }
+
+    // method to display an ArrayList
+    public static void displayList(List<Integer> list) {
+        for(Integer item : list) {
+            System.out.printf("%d ", item);
+        }
+        System.out.println();
+    }
+    /** 2. Add Two Numbers End **/
 
     public static void main(String[] args) {
 //        Integer [] arr = new Integer[] { 3,2,4 };
