@@ -82,11 +82,8 @@ public class leetcodeExercises {
         List<Integer> arr2 = buildArrayList(stack2);
 
         // display the ArrayLists
-        System.out.print("List 1: ");
-        displayList(arr1);
-
-        System.out.print("List 2: ");
-        displayList(arr2);
+        System.out.printf("List 1: %s\n", displayList(arr1));
+        System.out.printf("List 2: %s\n", displayList(arr2));
 
         return l1;
     }
@@ -111,12 +108,26 @@ public class leetcodeExercises {
         return arr;
     }
 
-    // method to display an ArrayList
-    public static void displayList(List<Integer> list) {
-        for(Integer item : list) {
-            System.out.printf("%d ", item);
+    // method to convert a List of Integers into a concatenated string
+    public static String displayList(List<Integer> list) {
+        StringBuilder strbul  = new StringBuilder();
+        Iterator<Integer> iter = list.iterator();
+        while(iter.hasNext())
+        {
+            strbul.append(iter.next());
         }
-        System.out.println();
+        return strbul.toString();
+    }
+
+    // method to help build the linked list from int array
+    public static ListNode buildList(int[] arr) {
+        ListNode root = new ListNode(arr[0]);
+        ListNode current = root;
+        for (int i = 1; i < arr.length; i++) {
+            current.next = new ListNode(arr[i]);
+            current = current.next;
+        }
+        return root;
     }
     /** 2. Add Two Numbers End **/
 
@@ -132,15 +143,5 @@ public class leetcodeExercises {
 
         ListNode root1 = addTwoNumbers(l1, l2);
         System.out.println("\nRoot list 1: " + root1.val);
-    }
-
-    public static ListNode buildList(int[] arr) {
-        ListNode root = new ListNode(arr[0]);
-        ListNode current = root;
-        for (int i = 1; i < arr.length; i++) {
-            current.next = new ListNode(arr[i]);
-            current = current.next;
-        }
-        return root;
     }
 }
