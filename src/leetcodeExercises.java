@@ -73,67 +73,34 @@ public class leetcodeExercises {
     }
 
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        // build two stacks for each linked list
-        Stack<Integer> stack1 = buildStack(l1);
-        Stack<Integer> stack2 = buildStack(l2);
+        // Declare local variables
+        ListNode result = new ListNode(0);
+        ListNode p = l1,
+                q = l2,
+                curr = result;
+        // carry variable to store the number to carry over to the following summation of the lists
+        int carry = 0;
 
-        // build an ArrayList by popping the elements from both stacks
-        List<Integer> arr1 = buildArrayList(stack1);
-        List<Integer> arr2 = buildArrayList(stack2);
+        // while loop that will perform the calculation using l1 and l2 linked lists
+        while(p != null || q != null) {
+            int num1 = (p != null)? p.val : 0;
+            int num2 = (q != null)? q.val: 0;
+            int sum = carry + num1 + num2;
+            carry = sum / 10;
 
-        // Convert String of list 1 & 2 into two integers, then add them
-        Integer num1 = Integer.parseInt(stringifyList(arr1));
-        Integer num2 = Integer.parseInt(stringifyList(arr2));
-        Integer res = num1 + num2;
-//        System.out.printf("Result of %d added to %d is %d\n",num1, num2, res);
+            curr.next = new ListNode(sum % 10);
 
-        // Convert sum back into a String so we can build the sum into a List<Integer>
-        List<Integer> resArr = convertIntToList(res.toString());
-//        for(Integer item : resArr) {
-//            System.out.println(item);
-//        }
-
-        return buildList(resArr);
-    }
-
-    // method to help traverse through linked list
-    public static Stack<Integer> buildStack(ListNode l) {
-        Stack<Integer> stack = new Stack<>();
-        ListNode current = l;
-        while(current != null) {
-            stack.push(current.val);
-            current = current.next;
+            // set the variable pointers to point to the following ListNode in the list
+            curr = curr.next;
+            if(p != null) p = p.next;
+            if(q != null) q = q.next;
         }
-        return stack;
-    }
 
-    // method to help build a list of the numbers from the stack
-    public static List<Integer> buildArrayList(Stack<Integer> stack) {
-        List<Integer> arr = new ArrayList<>();
-        while (!stack.isEmpty()) {
-            arr.add(stack.pop());
+        if(carry > 0) {
+            curr.next = new ListNode(carry);
         }
-        return arr;
-    }
 
-    // method to convert a List of Integers into a concatenated string
-    public static String stringifyList(List<Integer> list) {
-        StringBuilder strbul  = new StringBuilder();
-        Iterator<Integer> iter = list.iterator();
-        while(iter.hasNext())
-        {
-            strbul.append(iter.next());
-        }
-        return strbul.toString();
-    }
-
-    // method to convert an integer into an integer array, then into a stack
-    public static List<Integer> convertIntToList(String sum) {
-        Stack<Integer> stk = new Stack<>();
-        for(int i = 0; i < sum.length(); i++) {
-            stk.push(sum.charAt(i) - '0');
-        }
-        return buildArrayList(stk);
+        return result.next;
     }
 
     // method to help build the linked list from List<Integer>
@@ -152,14 +119,13 @@ public class leetcodeExercises {
 //        Integer [] arr = new Integer[] { 3,2,4 };
 //        Integer [] res = twoSumV2(arr, 6);
 //        System.out.println(Arrays.asList(res));
-        List<Integer> list1 = new ArrayList<>(Arrays.asList( 2, 4, 3 ));
+        List<Integer> list1 = new ArrayList<>(Arrays.asList( 1, 0, 0, 0, 0, 0, 0, 1 ));
         List<Integer> list2 = new ArrayList<>(Arrays.asList( 5, 6, 4 ));
 
         ListNode l1 = buildList(list1);
         ListNode l2 = buildList(list2);
 
         ListNode rt = addTwoNumbers(l1, l2);
-//        System.out.println("\nRoot of sum Linked List: " + rt.val);
         ListNode current = rt;
         while (current != null) {
             System.out.println(current.val);
