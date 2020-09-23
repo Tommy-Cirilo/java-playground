@@ -81,11 +81,19 @@ public class leetcodeExercises {
         List<Integer> arr1 = buildArrayList(stack1);
         List<Integer> arr2 = buildArrayList(stack2);
 
-        // display the ArrayLists
-        System.out.printf("List 1: %s\n", displayList(arr1));
-        System.out.printf("List 2: %s\n", displayList(arr2));
+        // Convert String of list 1 & 2 into two integers, then add them
+        Integer num1 = Integer.parseInt(stringifyList(arr1));
+        Integer num2 = Integer.parseInt(stringifyList(arr2));
+        Integer res = num1 + num2;
+//        System.out.printf("Result of %d added to %d is %d\n",num1, num2, res);
 
-        return l1;
+        // Convert sum back into a String so we can build the sum into a List<Integer>
+        List<Integer> resArr = convertIntToList(res.toString());
+//        for(Integer item : resArr) {
+//            System.out.println(item);
+//        }
+
+        return buildList(resArr);
     }
 
     // method to help traverse through linked list
@@ -109,7 +117,7 @@ public class leetcodeExercises {
     }
 
     // method to convert a List of Integers into a concatenated string
-    public static String displayList(List<Integer> list) {
+    public static String stringifyList(List<Integer> list) {
         StringBuilder strbul  = new StringBuilder();
         Iterator<Integer> iter = list.iterator();
         while(iter.hasNext())
@@ -119,12 +127,21 @@ public class leetcodeExercises {
         return strbul.toString();
     }
 
-    // method to help build the linked list from int array
-    public static ListNode buildList(int[] arr) {
-        ListNode root = new ListNode(arr[0]);
+    // method to convert an integer into an integer array, then into a stack
+    public static List<Integer> convertIntToList(String sum) {
+        Stack<Integer> stk = new Stack<>();
+        for(int i = 0; i < sum.length(); i++) {
+            stk.push(sum.charAt(i) - '0');
+        }
+        return buildArrayList(stk);
+    }
+
+    // method to help build the linked list from List<Integer>
+    public static ListNode buildList(List<Integer> arr) {
+        ListNode root = new ListNode(arr.get(0));
         ListNode current = root;
-        for (int i = 1; i < arr.length; i++) {
-            current.next = new ListNode(arr[i]);
+        for (int i = 1; i < arr.size(); i++) {
+            current.next = new ListNode(arr.get(i));
             current = current.next;
         }
         return root;
@@ -135,13 +152,18 @@ public class leetcodeExercises {
 //        Integer [] arr = new Integer[] { 3,2,4 };
 //        Integer [] res = twoSumV2(arr, 6);
 //        System.out.println(Arrays.asList(res));
-        int[] list1 = new int[] { 2, 4, 3 };
-        int[] list2 = new int[] { 5, 6, 4 };
+        List<Integer> list1 = new ArrayList<>(Arrays.asList( 2, 4, 3 ));
+        List<Integer> list2 = new ArrayList<>(Arrays.asList( 5, 6, 4 ));
 
         ListNode l1 = buildList(list1);
         ListNode l2 = buildList(list2);
 
-        ListNode root1 = addTwoNumbers(l1, l2);
-        System.out.println("\nRoot list 1: " + root1.val);
+        ListNode rt = addTwoNumbers(l1, l2);
+//        System.out.println("\nRoot of sum Linked List: " + rt.val);
+        ListNode current = rt;
+        while (current != null) {
+            System.out.println(current.val);
+            current = current.next;
+        }
     }
 }
