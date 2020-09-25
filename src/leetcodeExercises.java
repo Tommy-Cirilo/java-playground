@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class leetcodeExercises {
@@ -115,21 +116,61 @@ public class leetcodeExercises {
     }
     /** 2. Add Two Numbers End **/
 
+    /** 3. Longest Substring Without Repeating Characters **/
+//    Given a string s, find the length of the longest substring without repeating characters.
+//
+//    Example 1:
+//    Input: s = "abcabcbb"
+//    Output: 3
+//    Explanation: The answer is "abc", with the length of 3.
+//
+//    Example 2:
+//    Input: s = "bbbbb"
+//    Output: 1
+//    Explanation: The answer is "b", with the length of 1.
+//
+//    Example 3:
+//    Input: s = "pwwkew"
+//    Output: 3
+//    Explanation: The answer is "wke", with the length of 3.
+//    Notice that the answer must be a substring, "pwke" is a subsequence and not a substring.
+//
+//    Example 4:
+//    Input: s = ""
+//    Output: 0
+//
+//    Constraints:
+//
+//    0 <= s.length <= 5 * 104
+//    s consists of English letters, digits, symbols and spaces.
+
+    public static int lengthOfLongestSubstring(String s) {
+        int length = 0;
+
+        for(int i = 0; i < s.length(); i++) {
+            System.out.println(s.charAt(i));
+        }
+        return s.length();
+    }
+    /** 3. Longest Substring Without Repeating Characters **/
+
     public static void main(String[] args) {
 //        Integer [] arr = new Integer[] { 3,2,4 };
 //        Integer [] res = twoSumV2(arr, 6);
 //        System.out.println(Arrays.asList(res));
-        List<Integer> list1 = new ArrayList<>(Arrays.asList( 1, 0, 0, 0, 0, 0, 0, 1 ));
-        List<Integer> list2 = new ArrayList<>(Arrays.asList( 5, 6, 4 ));
-
-        ListNode l1 = buildList(list1);
-        ListNode l2 = buildList(list2);
-
-        ListNode rt = addTwoNumbers(l1, l2);
-        ListNode current = rt;
-        while (current != null) {
-            System.out.println(current.val);
-            current = current.next;
-        }
+//        List<Integer> list1 = new ArrayList<>(Arrays.asList( 1, 0, 0, 0, 0, 0, 0, 1 ));
+//        List<Integer> list2 = new ArrayList<>(Arrays.asList( 5, 6, 4 ));
+//
+//        ListNode l1 = buildList(list1);
+//        ListNode l2 = buildList(list2);
+//
+//        ListNode rt = addTwoNumbers(l1, l2);
+//        ListNode current = rt;
+//        while (current != null) {
+//            System.out.println(current.val);
+//            current = current.next;
+//        }
+        String str = "pwwkew";
+        System.out.println(lengthOfLongestSubstring(str));
     }
 }
