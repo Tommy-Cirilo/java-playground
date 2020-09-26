@@ -117,6 +117,7 @@ public class leetcodeExercises {
     /** 2. Add Two Numbers End **/
 
     /** 3. Longest Substring Without Repeating Characters **/
+
 //    Given a string s, find the length of the longest substring without repeating characters.
 //
 //    Example 1:
@@ -144,14 +145,45 @@ public class leetcodeExercises {
 //    0 <= s.length <= 5 * 104
 //    s consists of English letters, digits, symbols and spaces.
 
-    public static int lengthOfLongestSubstring(String s) {
-        int length = 0;
+    // Solution 1: O(n^2)
+    public static int lengthOfLongestSubstring(String str)
+    {
+        int n = str.length();
 
-        for(int i = 0; i < s.length(); i++) {
-            System.out.println(s.charAt(i));
+        // Result
+        int res = 0;
+        for(int i = 0; i < n; i++)
+        {
+
+            // Note : Default values in visited are false
+            boolean[] visited = new boolean[256];
+
+            for(int j = i; j < n; j++)
+            {
+
+                // If current character is visited
+                // Break the loop
+                if (visited[str.charAt(j)] == true)
+                    break;
+
+                // Else update the result if
+                // this window is larger, and mark
+                // current character as visited.
+                else
+                {
+                    res = Math.max(res, j - i + 1);
+                    visited[str.charAt(j)] = true;
+                }
+            }
+
+            // Remove the first character of previous
+            // window
+            visited[str.charAt(i)] = false;
         }
-        return s.length();
+        return res;
     }
+
+    // Solution 2: O(n) Linear
     /** 3. Longest Substring Without Repeating Characters **/
 
     public static void main(String[] args) {
