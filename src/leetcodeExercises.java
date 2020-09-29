@@ -185,7 +185,7 @@ public class leetcodeExercises {
     // Solution 2: O(n) Linear
     static final int NO_OF_CHARS = 256;
 
-    static int longestUniqueSubsttr(String str)
+    static int lengthOfLongestSubstringV2(String str)
     {
         int n = str.length();
 
@@ -235,6 +235,7 @@ public class leetcodeExercises {
 //            current = current.next;
 //        }
         String str = "pwwkew";
-        System.out.println(lengthOfLongestSubstring(str));
+//        System.out.println(lengthOfLongestSubstring(str));
+        System.out.println(lengthOfLongestSubstringV2(str));
     }
 }
