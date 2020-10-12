@@ -6,9 +6,7 @@ public class leetcodeExercises {
     /** 1. Two Sum Exercise **/
 
     /*Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
-
     You may assume that each input would have exactly one solution, and you may not use the same element twice.
-
     You can return the answer in any order.
 
 
@@ -216,7 +214,44 @@ public class leetcodeExercises {
         }
         return res;
     }
-    /** 3. Longest Substring Without Repeating Characters **/
+    /** 3. Longest Substring Without Repeating Characters End **/
+
+    /** 4. Longest Palindromic Substring **/
+
+//    Given a string s, return the longest palindromic substring in s.
+//
+//
+//
+//    Example 1:
+//
+//    Input: s = "babad"
+//    Output: "bab"
+//    Note: "aba" is also a valid answer.
+//            Example 2:
+//
+//    Input: s = "cbbd"
+//    Output: "bb"
+//    Example 3:
+//
+//    Input: s = "a"
+//    Output: "a"
+//    Example 4:
+//
+//    Input: s = "ac"
+//    Output: "a"
+//
+//
+//    Constraints:
+//
+//            1 <= s.length <= 1000
+//    s consist of only digits and English letters (lower-case and/or upper-case)
+
+    public static String longestPalindrome(String s) {
+        String str = "";
+        return str;
+    }
+
+    /** 4. Longest Palindromic Substring End **/
 
     public static void main(String[] args) {
 //        Integer [] arr = new Integer[] { 3,2,4 };
