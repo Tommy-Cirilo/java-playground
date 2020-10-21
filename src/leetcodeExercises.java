@@ -223,31 +223,43 @@ public class leetcodeExercises {
 //
 //
 //    Example 1:
-//
 //    Input: s = "babad"
 //    Output: "bab"
 //    Note: "aba" is also a valid answer.
-//            Example 2:
 //
+//    Example 2:
 //    Input: s = "cbbd"
 //    Output: "bb"
+
+
 //    Example 3:
-//
 //    Input: s = "a"
 //    Output: "a"
+
 //    Example 4:
-//
 //    Input: s = "ac"
 //    Output: "a"
-//
 //
 //    Constraints:
 //
 //            1 <= s.length <= 1000
 //    s consist of only digits and English letters (lower-case and/or upper-case)
 
-    public static String longestPalindrome(String s) {
-        String str = "";
+    public static List<String> longestPalindrome(String s) {
+        // Declare local variables
+        // set int beg to first character index
+        int beg = 0;
+        // set int end to the last character index
+        int end = s.length() - 1;
+        int palindromeSize = 0;
+        List<String> str = new ArrayList<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(beg) != s.charAt(end)) {
+
+            }
+        }
+
         return str;
     }
 
